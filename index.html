@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Copiar alias</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: white;
+      padding: 35px 25px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 4px 18px #0001;
+      width: 85%;
+      max-width: 360px;
+    }
+    h1 { font-size: 24px; }
+    p { color: #555; }
+    .alias {
+      font-size: 21px;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+      margin: 25px 0;
+    }
+    button {
+      background: #1769e0;
+      color: white;
+      border: 0;
+      border-radius: 10px;
+      padding: 15px 22px;
+      font-size: 17px;
+      cursor: pointer;
+      width: 100%;
+    }
+    #mensaje { margin-top: 15px; color: #176b37; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Alias para transferencias</h1>
+    <p>Presioná el botón para copiar el alias.</p>
+    <div class="alias" id="alias">recibimientoscat26</div>
+    <button onclick="copiarAlias()">Copiar alias</button>
+    <div id="mensaje" aria-live="polite"></div>
+  </main>
+  <script>
+    async function copiarAlias() {
+      const alias = "recibimientoscat26";
+      try {
+        await navigator.clipboard.writeText(alias);
+        document.getElementById("mensaje").textContent =
+          "¡Alias copiado! Ya podés pegarlo.";
+      } catch (e) {
+        document.getElementById("mensaje").textContent =
+          "Seleccioná y copiá el alias que aparece arriba.";
+      }
+    }
+  </script>
+</body>
+</html>
